@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    BUY
+{% endblock %}
+{% block main %}
+    {% if query %}
+        <form action="/buy" method="get">
+            <p>A share of {{query["name"]}} costs  ${{query["price"]}}</p>
+        </form>>
+    {% else %}
+
+        <form action="/buy" method="post">
+            <div class="mb-3">
+
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Example: AMD" type="text" required>
+                <input autocomplete="off" class="form-control mx-auto w-auto" min="1" name="shares" placeholder="Shares" type="number">
+                <button class="btn btn-primary" type="submit">BUY</button>
+            </div>
+        </form>
+    {% endif %}
+
+{% endblock %}

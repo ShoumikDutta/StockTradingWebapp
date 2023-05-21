@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+{% block main %}
+    {% if query %}
+        <form action="/quote" method="get">
+            <p>A share of {{query["name"]}} costs  ${{query["price"]}}</p>
+        </form>>
+    {% else %}
+
+        <form action="/quote" method="post">
+            <div class="mb-3">
+                <label class="mb-3 fw-bold" for="quote">Search for Stock Value</label>
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Example: AMD" type="text" required>
+                <button class="btn btn-primary" type="submit">Quote</button>
+            </div>
+        </form>
+    {% endif %}
+
+{% endblock %}
